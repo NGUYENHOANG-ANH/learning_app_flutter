@@ -1,83 +1,83 @@
 {
+  "version":  2,
+  "topicId": "fruits",
+  "metadata": {
+    "author":  "Team",
+    "lastUpdated": "2025-12-14",
+    "totalQuizzes": 5,
+    "difficultyRange": [1, 2]
+  },
   "quizzes": [
     {
-      "id":  "quiz_fruit_001",
-      "topicId": "fruits",
-      "question": "Đây là trái cây gì?",
+      "id": "quiz_fruits_001",
+      "question": "What fruit is this?",
       "questionType": "image",
       "imageUrl": "assets/images/quizzes/fruits/apple_quiz.png",
-      "options": [
-        {
-          "id": "opt_f_001_1",
-          "text": "Apple",
-          "imageUrl": "assets/images/options/fruits/apple_small.png"
-        },
-        {
-          "id": "opt_f_001_2",
-          "text": "Orange",
-          "imageUrl": "assets/images/options/fruits/orange_small.png"
-        }
-      ],
-      "correctAnswerId": "opt_f_001_1",
-      "level": 1
+      "sourceFlashcardId": "fc_fruit_001",
+      "optionCount": 3,
+      "level": 1,
+      "timeLimit": null,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
     },
     {
-      "id": "quiz_fruit_002",
-      "topicId":  "fruits",
-      "question":  "Trái cây vàng này là gì?",
+      "id": "quiz_fruits_002",
+      "question":  "Which is the Banana?",
       "questionType": "image",
       "imageUrl": "assets/images/quizzes/fruits/banana_quiz.png",
-      "options": [
-        {
-          "id": "opt_f_002_1",
-          "text": "Apple",
-          "imageUrl": "assets/images/options/fruits/apple_small.png"
-        },
-        {
-          "id": "opt_f_002_2",
-          "text": "Banana",
-          "imageUrl":  "assets/images/options/fruits/banana_small.png"
-        },
-        {
-          "id":  "opt_f_002_3",
-          "text": "Grape",
-          "imageUrl": "assets/images/options/fruits/grape_small.png"
-        }
-      ],
-      "correctAnswerId": "opt_f_002_2",
-      "level": 2
+      "sourceFlashcardId": "fc_fruit_002",
+      "optionCount": 3,
+      "level": 1,
+      "timeLimit": null,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
     },
     {
-      "id": "quiz_fruit_003",
-      "topicId": "fruits",
-      "question": "Trái cây đỏ lớn này là gì?",
+      "id": "quiz_fruits_003",
+      "question": "Find the Orange",
       "questionType": "image",
-      "imageUrl": "assets/images/quizzes/fruits/watermelon_quiz.png",
-      "options": [
-        {
-          "id": "opt_f_003_1",
-          "text": "Watermelon",
-          "imageUrl": "assets/images/options/fruits/watermelon_small.png"
-        },
-        {
-          "id": "opt_f_003_2",
-          "text": "Apple",
-          "imageUrl": "assets/images/options/fruits/apple_small.png"
-        },
-        {
-          "id": "opt_f_003_3",
-          "text": "Strawberry",
-          "imageUrl":  "assets/images/options/fruits/strawberry_small.png"
-        },
-        {
-          "id":  "opt_f_003_4",
-          "text": "Mango",
-          "imageUrl":  "assets/images/options/fruits/mango_small.png"
-        }
-      ],
-      "correctAnswerId": "opt_f_003_1",
-      "level": 3,
-      "timeLimit": 10
+      "imageUrl": "assets/images/quizzes/fruits/orange_quiz.png",
+      "sourceFlashcardId": "fc_fruit_003",
+      "optionCount": 4,
+      "level": 1,
+      "timeLimit": 15,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
+    },
+    {
+      "id": "quiz_fruits_004",
+      "question": "What fruit is this?",
+      "questionType": "image",
+      "imageUrl": "assets/images/quizzes/fruits/strawberry_quiz.png",
+      "sourceFlashcardId":  "fc_fruit_004",
+      "optionCount": 3,
+      "level": 1,
+      "timeLimit": 15,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
+    },
+    {
+      "id": "quiz_fruits_005",
+      "question": "Look and listen - what fruit? ",
+      "questionType": "mixed",
+      "imageUrl":  "assets/images/quizzes/fruits/mango_quiz.png",
+      "audioUrl": "assets/sounds/quizzes/fruits/mango_sound.mp3",
+      "sourceFlashcardId": "fc_fruit_007",
+      "optionCount":  4,
+      "level":  2,
+      "timeLimit": 20,
+      "reward": {
+        "baseStars": 2,
+        "perfectBonus": 1
+      }
     }
   ]
 }

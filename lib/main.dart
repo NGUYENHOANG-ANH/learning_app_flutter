@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'screens/home_screen.dart';
+import 'services/storage_service.dart';
 import 'utils/app_colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize Hive for local storage
-  // await Hive.initFlutter();
+  // ✅ Initialize Hive for local storage
+  await StorageService.initialize();
 
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
+      // ✅ REMOVE routes - use only home
       home: const HomeScreen(),
     );
   }

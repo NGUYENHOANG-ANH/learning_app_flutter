@@ -1,0 +1,142 @@
+{
+  "topicId": "animals",
+  "assetBase": {
+    "image": "assets/data/images/flashcards/animals/",
+    "audio": "assets/data/sounds/flashcards/animals/",
+    "video": "assets/data/videos/flashcards/animals/"
+  },
+  "flashcards": [
+    {
+      "id": "fc_animal_001",
+      "word":  "Lion",
+      "pronunciation": "/ˈlaɪən/",
+      "difficulty": 1,
+      "vietnameseName":  "Sư tử",
+      "description": "A large wild cat with a mane",
+      "image": "lion.png",
+      "audio": "lion.mp3",
+      "video": "lion.mp4"
+    },
+    {
+      "id": "fc_animal_002",
+      "word": "Elephant",
+      "pronunciation": "/ˈɛlɪfənt/",
+      "difficulty": 1,
+      "vietnameseName": "Voi",
+      "description": "A large animal with a long trunk",
+      "image": "elephant.png",
+      "audio": "elephant.mp3",
+      "video": "elephant.mp4"
+    },
+    {
+      "id": "fc_animal_003",
+      "word": "Dog",
+      "pronunciation": "/dɔːɡ/",
+      "difficulty": 1,
+      "vietnameseName": "Chó",
+      "description": "A friendly pet animal",
+      "image": "dog.png",
+      "audio": "dog.mp3",
+      "video": "dog.mp4"
+    },
+    {
+      "id": "fc_animal_004",
+      "word": "Cat",
+      "pronunciation": "/kæt/",
+      "difficulty": 1,
+      "vietnameseName": "Mèo",
+      "description": "A friendly pet animal",
+      "image":  "cat.png",
+      "audio": "cat.mp3",
+      "video": "cat.mp4"
+    },
+    {
+      "id": "fc_animal_005",
+      "word": "Tiger",
+      "pronunciation": "/ˈtaɪɡər/",
+      "difficulty": 2,
+      "vietnameseName":  "Hổ",
+      "description": "A large wild cat with stripes",
+      "image":  "tiger.png",
+      "audio": "tiger.mp3",
+      "video": "tiger.mp4"
+    },
+    {
+      "id": "fc_animal_006",
+      "word": "Giraffe",
+      "pronunciation":  "/dʒɪˈræf/",
+      "difficulty": 2,
+      "vietnameseName":  "Hươu cao cổ",
+      "description":  "A tall animal with a long neck",
+      "image":  "giraffe.png",
+      "audio": "giraffe.mp3",
+      "video": "giraffe.mp4"
+    },
+    {
+      "id": "fc_animal_007",
+      "word":  "Chicken",
+      "pronunciation": "/ˈtʃɪkɪn/",
+      "difficulty": 2,
+      "vietnameseName":  "Gà",
+      "description": "A common farm animal",
+      "image": "chicken.png",
+      "audio": "chicken.mp3",
+      "video": "chicken.mp4"
+    },
+    {
+      "id": "fc_animal_008",
+      "word": "Monkey",
+      "pronunciation": "/ˈmʌŋki/",
+      "difficulty": 2,
+      "vietnameseName": "Khỉ",
+      "description": "A playful animal with a long tail",
+      "image": "monkey.png",
+      "audio": "monkey.mp3",
+      "video": "monkey.mp4"
+    },
+    {
+      "id": "fc_animal_009",
+      "word": "Pig",
+      "pronunciation": "/pɪɡ/",
+      "difficulty": 1,
+      "vietnameseName":  "Lợn",
+      "description": "A farm animal that loves mud",
+      "image": "pig.png",
+      "audio":  "pig.mp3",
+      "video": "pig.mp4"
+    },
+    {
+      "id": "fc_animal_010",
+      "word":  "Cow",
+      "pronunciation": "/kaʊ/",
+      "difficulty": 1,
+      "vietnameseName": "Bò",
+      "description": "A large farm animal that gives milk",
+      "image": "cow.png",
+      "audio": "cow.mp3",
+      "video": "cow.mp4"
+    },
+    {
+      "id": "fc_animal_011",
+      "word": "Horse",
+      "pronunciation": "/hɔːrs/",
+      "difficulty": 2,
+      "vietnameseName": "Ngựa",
+      "description": "A fast running animal",
+      "image": "horse.png",
+      "audio": "horse.mp3",
+      "video": "horse.mp4"
+    },
+    {
+      "id": "fc_animal_012",
+      "word": "Duck",
+      "pronunciation": "/dʌk/",
+      "difficulty": 1,
+      "vietnameseName":  "Vịt",
+      "description": "A water bird that quacks",
+      "image": "duck.png",
+      "audio": "duck.mp3",
+      "video": "duck.mp4"
+    }
+  ]
+}

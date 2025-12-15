@@ -1,28 +1,28 @@
 # Miscellaneous
-*.class
+*. class
 *.log
 *.pyc
-*.swp
-.DS_Store
-.atom/
+*. swp
+. DS_Store
+. atom/
 .build/
 .buildlog/
 .history
 .svn/
-.swiftpm/
+. swiftpm/
 migrate_working_dir/
 
 # IntelliJ related
-*.iml
-*.ipr
+*. iml
+*. ipr
 *.iws
-.idea/
+. idea/
 
 # VS Code
 .vscode/
 
 # Flutter / Dart
-.dart_tool/
+. dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
 .pub-cache/
@@ -30,7 +30,7 @@ migrate_working_dir/
 build/
 coverage/
 **/doc/api/
-**/ios/Flutter/.last_build_id
+**/ios/Flutter/. last_build_id
 
 # Android
 /android/app/debug
@@ -38,17 +38,39 @@ coverage/
 /android/app/release
 
 # Windows / Visual Studio
-*.sln
+*. sln
 *.vcxproj*
 *.user
 *.opendb
 *.db
 *.pdb
 *.ilk
-.vs/
+. vs/
 
 # Symbolication
-app.*.symbols
+app.*. symbols
 
 # Obfuscation
-app.*.map.json
+app.*. map. json
+
+# ✅ ADD THESE ASSET IGNORES (keep folder structure, ignore large files)
+# Images
+assets/images/flashcards/**/*. png
+assets/images/flashcards/**/*.jpg
+assets/images/flashcards/**/*.jpeg
+assets/images/quizzes/**/*.png
+assets/images/quizzes/**/*.jpg
+assets/images/options/**/*.png
+assets/images/options/**/*.jpg
+assets/images/topics/**/*.png
+assets/images/topics/**/*.jpg
+
+# Audio
+assets/sounds/**/*.mp3
+assets/sounds/**/*.wav
+assets/sounds/**/*. m4a
+
+# Videos
+assets/videos/**/*.mp4
+assets/videos/**/*.mov
+assets/videos/**/*.mkv

@@ -1,81 +1,87 @@
 {
+  "topicId": "shapes",
+  "assetBase": {
+    "image": "assets/images/flashcards/shapes/",
+    "audio": "assets/sounds/flashcards/shapes/",
+    "video": "assets/videos/flashcards/shapes/"
+  },
   "flashcards": [
     {
       "id": "fc_shape_001",
       "word": "Circle",
       "pronunciation": "/ˈsɜːrkəl/",
-      "imageUrl": "assets/images/flashcards/shapes/circle.png",
-      "audioUrl": "assets/sounds/flashcards/shapes/circle_word.mp3",
-      "topicId":  "shapes",
+      "difficulty":  1,
       "vietnameseName": "Hình tròn",
-      "description": "A round shape",
-      "difficulty": 1
+      "description": "A round shape with no corners",
+      "image": "circle.png",
+      "audio":  "circle.mp3",
+      "video": "circle.mp4"
     },
     {
       "id": "fc_shape_002",
       "word":  "Square",
-      "pronunciation": "/skwɛr/",
-      "imageUrl": "assets/images/flashcards/shapes/square.png",
-      "audioUrl": "assets/sounds/flashcards/shapes/square_word.mp3",
-      "topicId": "shapes",
+      "pronunciation":  "/skwɛr/",
+      "difficulty": 1,
       "vietnameseName": "Hình vuông",
       "description": "A shape with four equal sides",
-      "difficulty": 1
+      "image": "square.png",
+      "audio": "square.mp3",
+      "video": "square.mp4"
     },
     {
-      "id": "fc_shape_003",
-      "word": "Triangle",
-      "pronunciation": "/ˈtraɪæŋɡəl/",
-      "imageUrl": "assets/images/flashcards/shapes/triangle.png",
-      "audioUrl": "assets/sounds/flashcards/shapes/triangle_word.mp3",
-      "topicId": "shapes",
-      "vietnameseName": "Hình tam giác",
-      "description": "A shape with three sides",
-      "difficulty": 1
+      "id":  "fc_shape_003",
+      "word": "Rectangle",
+      "pronunciation": "/ˈrɛktæŋɡəl/",
+      "difficulty":  1,
+      "vietnameseName": "Hình chữ nhật",
+      "description": "A shape with four sides",
+      "image": "rectangle. png",
+      "audio": "rectangle.mp3",
+      "video": "rectangle.mp4"
     },
     {
       "id": "fc_shape_004",
-      "word": "Rectangle",
-      "pronunciation": "/rɛkˈtæŋɡəl/",
-      "imageUrl": "assets/images/flashcards/shapes/rectangle.png",
-      "audioUrl": "assets/sounds/flashcards/shapes/rectangle_word.mp3",
-      "topicId": "shapes",
-      "vietnameseName": "Hình chữ nhật",
-      "description": "A shape with four sides",
-      "difficulty": 1
+      "word": "Triangle",
+      "pronunciation": "/ˈtraɪæŋɡəl/",
+      "difficulty": 1,
+      "vietnameseName": "Hình tam giác",
+      "description": "A shape with three sides",
+      "image": "triangle.png",
+      "audio": "triangle. mp3",
+      "video":  "triangle.mp4"
     },
     {
       "id": "fc_shape_005",
-      "word":  "Star",
-      "pronunciation": "/stɑːr/",
-      "imageUrl":  "assets/images/flashcards/shapes/star.png",
-      "audioUrl": "assets/sounds/flashcards/shapes/star_word.mp3",
-      "topicId": "shapes",
-      "vietnameseName":  "Hình sao",
-      "description": "A shape with pointed rays",
-      "difficulty": 2
+      "word": "Diamond",
+      "pronunciation": "/ˈdaɪəmənd/",
+      "difficulty":  2,
+      "vietnameseName": "Hình thoi",
+      "description": "A shape like a rotated square",
+      "image": "diamond.png",
+      "audio": "diamond.mp3",
+      "video": "diamond.mp4"
     },
     {
       "id": "fc_shape_006",
-      "word": "Heart",
-      "pronunciation": "/hɑːrt/",
-      "imageUrl":  "assets/images/flashcards/shapes/heart.png",
-      "audioUrl": "assets/sounds/flashcards/shapes/heart_word.mp3",
-      "topicId": "shapes",
-      "vietnameseName":  "Hình trái tim",
-      "description": "A shape that looks like love",
-      "difficulty": 1
+      "word": "Star",
+      "pronunciation": "/stɑːr/",
+      "difficulty": 1,
+      "vietnameseName":  "Hình sao",
+      "description": "A shape with pointed edges",
+      "image": "star.png",
+      "audio":  "star.mp3",
+      "video": "star.mp4"
     },
     {
       "id": "fc_shape_007",
-      "word": "Diamond",
-      "pronunciation": "/ˈdaɪəmənd/",
-      "imageUrl": "assets/images/flashcards/shapes/diamond.png",
-      "audioUrl": "assets/sounds/flashcards/shapes/diamond_word.mp3",
-      "topicId": "shapes",
-      "vietnameseName": "Hình thoi",
-      "description": "A shape with four pointed sides",
-      "difficulty": 2
+      "word":  "Heart",
+      "pronunciation":  "/hɑːrt/",
+      "difficulty": 1,
+      "vietnameseName":  "Hình trái tim",
+      "description": "A shape that represents love",
+      "image": "heart.png",
+      "audio": "heart.mp3",
+      "video": "heart.mp4"
     }
   ]
 }

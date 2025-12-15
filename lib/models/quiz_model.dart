@@ -1,85 +1,129 @@
+/// ✅ Question type enum
+enum QuestionType {
+  text, // Plain text question
+  image, // Image-based question
+  audio, // Audio/TTS question
+  mixed, // Combined image + audio
+}
+
+/// ✅ Quiz option model
+class QuizOption {
+  final String id;
+  final String text;
+  final String imageUrl;
+
+  QuizOption({
+    required this.id,
+    required this.text,
+    this.imageUrl = '',
+  });
+
+  factory QuizOption.fromJson(Map<String, dynamic> json) {
+    return QuizOption(
+      id: json['id']?.toString() ?? '',
+      text: json['text']?.toString() ?? '',
+      imageUrl: json['imageUrl']?.toString() ?? '',
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'text': text,
+        'imageUrl': imageUrl,
+      };
+}
+
+/// ✅ Quiz model with TTS support
 class Quiz {
   final String id;
   final String topicId;
-  final String question; // Dạng câu hỏi (text/image/audio)
-  final String questionType; // 'image', 'text', 'audio'
-  final String? imageUrl; // Hình ảnh câu hỏi
-  final String? audioUrl; // Âm thanh câu hỏi
-  final List<QuizOption> options; // Các lựa chọn
-  final String correctAnswerId; // ID câu trả lời đúng
-  final int
-      level; // 1: dễ (2 options), 2: trung bình (3 options), 3: khó (4 options)
-  final int? timeLimit; // Giới hạn thời gian (giây)
+  final String question;
+  final QuestionType questionType;
+  final String imageUrl;
+  final String? audioUrl;
+  final List<QuizOption> options;
+  final String correctAnswerId;
+  final int level;
+  final int? timeLimit;
+  final String? ttsText;
+  final double? ttsSpeed;
+  final String? ttsLanguage;
+  final List<String>? supportedQuestionTypes;
 
   Quiz({
     required this.id,
     required this.topicId,
     required this.question,
     required this.questionType,
-    this.imageUrl,
-    this.audioUrl,
+    required this.imageUrl,
+    required this.audioUrl,
     required this.options,
     required this.correctAnswerId,
     required this.level,
-    this.timeLimit,
+    required this.timeLimit,
+    this.ttsText,
+    this.ttsSpeed = 0.8,
+    this.ttsLanguage = 'en-US',
+    this.supportedQuestionTypes = const ['image', 'audio', 'mixed'],
   });
 
-  factory Quiz.fromJson(Map<String, dynamic> json) {
+  /// Check if should use TTS instead of audio file
+  bool get useTTS => ttsText != null && ttsText!.isNotEmpty;
+
+  factory Quiz.fromJson(
+    Map<String, dynamic> json, {
+    String? topicId,
+  }) {
+    final fcTopicId = topicId ?? json['topicId']?.toString();
+
+    if (fcTopicId == null) {
+      throw Exception('Quiz missing topicId');
+    }
+
     return Quiz(
-      id: json['id'] as String,
-      topicId: json['topicId'] as String,
-      question: json['question'] as String,
-      questionType: json['questionType'] as String,
-      imageUrl: json['imageUrl'] as String?,
-      audioUrl: json['audioUrl'] as String?,
-      options: (json['options'] as List)
-          .map((o) => QuizOption.fromJson(o as Map<String, dynamic>))
-          .toList(),
-      correctAnswerId: json['correctAnswerId'] as String,
-      level: json['level'] as int? ?? 1,
-      timeLimit: json['timeLimit'] as int?,
-    );
+        id: json['id']?.toString() ?? '',
+        topicId: fcTopicId,
+        question: json['question']?.toString() ?? '',
+        questionType: _parseQuestionType(json['questionType']),
+        imageUrl: json['imageUrl']?.toString() ?? '',
+        audioUrl: json['audioUrl']?.toString(),
+        options: [],
+        correctAnswerId: json['correctAnswerId']?.toString() ?? '',
+        level: (json['level'] as int?) ?? 1,
+        timeLimit: json['timeLimit'] as int?,
+        ttsText: json['ttsText']?.toString(),
+        ttsSpeed: (json['ttsSpeed'] as num?)?.toDouble() ?? 0.8,
+        ttsLanguage: json['ttsLanguage']?.toString() ?? 'en-US',
+        supportedQuestionTypes: List<String>.from(
+            json['supportedQuestionTypes'] as List? ??
+                ['image', 'audio', 'mixed']));
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'topicId': topicId,
-      'question': question,
-      'questionType': questionType,
-      'imageUrl': imageUrl,
-      'audioUrl': audioUrl,
-      'options': options.map((o) => o.toJson()).toList(),
-      'correctAnswerId': correctAnswerId,
-      'level': level,
-      'timeLimit': timeLimit,
-    };
-  }
-}
+  static QuestionType _parseQuestionType(dynamic type) {
+    if (type is QuestionType) return type;
 
-class QuizOption {
-  final String id;
-  final String text; // Văn bản câu trả lời
-  final String imageUrl; // Hình ảnh lựa chọn (nếu có)
-  final String? audioUrl; // Âm thanh phát âm
-
-  QuizOption({
-    required this.id,
-    required this.text,
-    required this.imageUrl,
-    this.audioUrl,
-  });
-
-  factory QuizOption.fromJson(Map<String, dynamic> json) {
-    return QuizOption(
-      id: json['id'] as String,
-      text: json['text'] as String,
-      imageUrl: json['imageUrl'] as String,
-      audioUrl: json['audioUrl'] as String?,
-    );
+    final typeStr = type.toString().toLowerCase();
+    if (typeStr.contains('image')) return QuestionType.image;
+    if (typeStr.contains('audio') || typeStr.contains('tts')) {
+      return QuestionType.audio;
+    }
+    if (typeStr.contains('mixed')) return QuestionType.mixed;
+    return QuestionType.text;
   }
 
-  Map<String, dynamic> toJson() {
-    return {'id': id, 'text': text, 'imageUrl': imageUrl, 'audioUrl': audioUrl};
-  }
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'topicId': topicId,
+        'question': question,
+        'questionType': questionType.toString(),
+        'imageUrl': imageUrl,
+        'audioUrl': audioUrl,
+        'correctAnswerId': correctAnswerId,
+        'level': level,
+        'timeLimit': timeLimit,
+        'ttsText': ttsText,
+        'ttsSpeed': ttsSpeed,
+        'ttsLanguage': ttsLanguage,
+        'supportedQuestionTypes': supportedQuestionTypes,
+      };
 }

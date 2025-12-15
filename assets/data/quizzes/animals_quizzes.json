@@ -1,0 +1,97 @@
+{
+  "version": 2,
+  "topicId": "animals",
+  "metadata": {
+    "author": "Team",
+    "lastUpdated": "2025-12-14",
+    "totalQuizzes": 5,
+    "difficultyRange": [1, 2]
+  },
+  "quizzes": [
+    {
+      "id": "quiz_animals_001",
+      "question": "What animal is this?",
+      "questionType": "text",
+      "sourceFlashcardId": "fc_animal_001",
+      "optionCount": 3,
+      "level": 1,
+      "timeLimit": null,
+      "ttsText": "Lion",
+      "ttsSpeed":  0.8,
+      "ttsLanguage": "en-US",
+      "supportedQuestionTypes": ["image", "audio", "mixed"],
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus":  1
+      }
+    },
+    {
+      "id":  "quiz_animals_002",
+      "question": "Which one is the Elephant?",
+      "questionType":  "text",
+      "sourceFlashcardId": "fc_animal_002",
+      "optionCount": 3,
+      "level": 1,
+      "timeLimit": null,
+      "ttsText": "Elephant",
+      "ttsSpeed":  0.8,
+      "ttsLanguage": "en-US",
+      "supportedQuestionTypes": ["image", "audio", "mixed"],
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
+    },
+    {
+      "id": "quiz_animals_003",
+      "question": "What animal is this?",
+      "questionType": "text",
+      "sourceFlashcardId": "fc_animal_003",
+      "optionCount": 4,
+      "level": 1,
+      "timeLimit": 15,
+      "ttsText":  "Dog",
+      "ttsSpeed":  0.8,
+      "ttsLanguage": "en-US",
+      "supportedQuestionTypes": ["image", "audio", "mixed"],
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
+    },
+    {
+      "id": "quiz_animals_004",
+      "question": "Listen and choose the animal",
+      "questionType": "text",
+      "sourceFlashcardId": "fc_animal_005",
+      "optionCount":  4,
+      "level": 2,
+      "timeLimit": 30,
+      "ttsText": "Tiger",
+      "ttsSpeed":  0.8,
+      "ttsLanguage": "en-US",
+      "supportedQuestionTypes": ["image", "audio", "mixed"],
+      "reward": {
+        "baseStars": 2,
+        "perfectBonus":  1
+      }
+    },
+    {
+      "id": "quiz_animals_005",
+      "question": "Look and listen.  What is it?",
+      "questionType": "text",
+      "sourceFlashcardId": "fc_animal_008",
+      "optionCount":  4,
+      "level": 2,
+      "timeLimit": 30,
+      "ttsText": "Monkey",
+      "ttsSpeed":  0.8,
+      "ttsLanguage": "en-US",
+      "supportedQuestionTypes": ["image", "audio", "mixed"],
+      "reward": {
+        "baseStars": 2,
+        "perfectBonus": 1
+      }
+    }
+  ]
+}

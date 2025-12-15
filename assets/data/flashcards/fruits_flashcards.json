@@ -1,124 +1,120 @@
 {
+  "topicId": "fruits",
+  "assetBase": {
+    "image": "assets/images/flashcards/fruits/",
+    "audio": "assets/sounds/flashcards/fruits/",
+    "video": "assets/videos/flashcards/fruits/"
+  },
   "flashcards": [
     {
       "id": "fc_fruit_001",
-      "word":  "Apple",
+      "word": "Apple",
       "pronunciation": "/ˈæpəl/",
-      "imageUrl": "assets/images/flashcards/fruits/apple.png",
-      "audioUrl": "assets/sounds/flashcards/fruits/apple_word.mp3",
-      "soundUrl": "assets/sounds/flashcards/fruits/apple_sound.mp3",
-      "topicId": "fruits",
+      "difficulty": 1,
       "vietnameseName": "Táo",
       "description": "A red, green, or yellow fruit",
-      "difficulty": 1
+      "image": "apple.png",
+      "audio": "apple.mp3",
+      "video": "apple.mp4"
     },
     {
       "id": "fc_fruit_002",
       "word": "Banana",
       "pronunciation": "/bəˈnænə/",
-      "imageUrl": "assets/images/flashcards/fruits/banana.png",
-      "audioUrl": "assets/sounds/flashcards/fruits/banana_word.mp3",
-      "soundUrl": "assets/sounds/flashcards/fruits/banana_sound.mp3",
-      "topicId": "fruits",
+      "difficulty":  1,
       "vietnameseName": "Chuối",
-      "description":  "A yellow tropical fruit",
-      "difficulty": 1
+      "description": "A yellow tropical fruit",
+      "image": "banana.png",
+      "audio": "banana.mp3",
+      "video": "banana.mp4"
     },
     {
       "id": "fc_fruit_003",
       "word": "Orange",
       "pronunciation": "/ˈɔːrɪndʒ/",
-      "imageUrl": "assets/images/flashcards/fruits/orange. png",
-      "audioUrl":  "assets/sounds/flashcards/fruits/orange_word.mp3",
-      "soundUrl":  "assets/sounds/flashcards/fruits/orange_sound.mp3",
-      "topicId": "fruits",
-      "vietnameseName": "Cam",
+      "difficulty": 1,
+      "vietnameseName":  "Cam",
       "description": "A citrus fruit",
-      "difficulty": 1
+      "image":  "orange.png",
+      "audio": "orange.mp3",
+      "video": "orange. mp4"
     },
     {
       "id": "fc_fruit_004",
       "word": "Strawberry",
       "pronunciation": "/ˈstrɔːberi/",
-      "imageUrl":  "assets/images/flashcards/fruits/strawberry.png",
-      "audioUrl": "assets/sounds/flashcards/fruits/strawberry_word.mp3",
-      "soundUrl": "assets/sounds/flashcards/fruits/strawberry_sound.mp3",
-      "topicId": "fruits",
+      "difficulty": 1,
       "vietnameseName": "Dâu tây",
       "description": "A red sweet berry",
-      "difficulty": 1
+      "image": "strawberry.png",
+      "audio": "strawberry.mp3",
+      "video": "strawberry.mp4"
     },
     {
       "id": "fc_fruit_005",
       "word": "Watermelon",
       "pronunciation": "/ˈwɔːtərmelən/",
-      "imageUrl":  "assets/images/flashcards/fruits/watermelon.png",
-      "audioUrl": "assets/sounds/flashcards/fruits/watermelon_word. mp3",
-      "soundUrl": "assets/sounds/flashcards/fruits/watermelon_sound.mp3",
-      "topicId": "fruits",
-      "vietnameseName": "Dưa hấu",
+      "difficulty": 2,
+      "vietnameseName":  "Dưa hấu",
       "description": "A large green fruit with red inside",
-      "difficulty": 2
+      "image": "watermelon.png",
+      "audio": "watermelon.mp3",
+      "video": "watermelon.mp4"
     },
     {
       "id": "fc_fruit_006",
       "word": "Grape",
-      "pronunciation":  "/ɡreɪp/",
-      "imageUrl": "assets/images/flashcards/fruits/grape. png",
-      "audioUrl":  "assets/sounds/flashcards/fruits/grape_word.mp3",
-      "soundUrl":  "assets/sounds/flashcards/fruits/grape_sound.mp3",
-      "topicId": "fruits",
+      "pronunciation": "/ɡreɪp/",
+      "difficulty": 1,
       "vietnameseName": "Nho",
       "description": "Small round fruits in bunches",
-      "difficulty": 1
+      "image":  "grape.png",
+      "audio": "grape.mp3",
+      "video": "grape. mp4"
     },
     {
       "id": "fc_fruit_007",
-      "word":  "Mango",
+      "word": "Mango",
       "pronunciation": "/ˈmæŋɡoʊ/",
-      "imageUrl": "assets/images/flashcards/fruits/mango.png",
-      "audioUrl": "assets/sounds/flashcards/fruits/mango_word.mp3",
-      "soundUrl": "assets/sounds/flashcards/fruits/mango_sound.mp3",
-      "topicId": "fruits",
+      "difficulty": 2,
       "vietnameseName":  "Xoài",
       "description":  "A tropical sweet fruit",
-      "difficulty": 2
+      "image": "mango.png",
+      "audio": "mango.mp3",
+      "video": "mango.mp4"
     },
     {
-      "id": "fc_fruit_008",
-      "word":  "Pineapple",
-      "pronunciation": "/ˈpaɪnæpəl/",
-      "imageUrl": "assets/images/flashcards/fruits/pineapple.png",
-      "audioUrl": "assets/sounds/flashcards/fruits/pineapple_word.mp3",
-      "soundUrl": "assets/sounds/flashcards/fruits/pineapple_sound.mp3",
-      "topicId":  "fruits",
+      "id":  "fc_fruit_008",
+      "word": "Pineapple",
+      "pronunciation":  "/ˈpaɪnæpəl/",
+      "difficulty": 2,
       "vietnameseName": "Dứa",
       "description": "A tropical fruit with spiky skin",
-      "difficulty":  2
+      "image":  "pineapple.png",
+      "audio": "pineapple.mp3",
+      "video": "pineapple.mp4"
     },
     {
-      "id":  "fc_fruit_009",
+      "id": "fc_fruit_009",
       "word": "Kiwi",
-      "pronunciation": "/ˈkiːwiː/",
-      "imageUrl": "assets/images/flashcards/fruits/kiwi. png",
-      "audioUrl":  "assets/sounds/flashcards/fruits/kiwi_word.mp3",
-      "soundUrl": "assets/sounds/flashcards/fruits/kiwi_sound.mp3",
-      "topicId": "fruits",
-      "vietnameseName": "Kiwi",
+      "pronunciation":  "/ˈkiːwiː/",
+      "difficulty":  2,
+      "vietnameseName":  "Kiwi",
       "description": "A small brown fruit with green inside",
-      "difficulty": 2
+      "image": "kiwi.png",
+      "audio": "kiwi.mp3",
+      "video": "kiwi.mp4"
     },
     {
-      "id":  "fc_fruit_010",
+      "id": "fc_fruit_010",
       "word": "Lemon",
       "pronunciation": "/ˈlemən/",
-      "imageUrl": "assets/images/flashcards/fruits/lemon.png",
-      "audioUrl": "assets/sounds/flashcards/fruits/lemon_word.mp3",
-      "soundUrl":  "assets/sounds/flashcards/fruits/lemon_sound. mp3",
-      "topicId": "fruits",
+      "difficulty": 1,
       "vietnameseName": "Chanh",
       "description": "A sour yellow citrus fruit",
-      "difficulty":  1
+      "image":  "lemon.png",
+      "audio": "lemon.mp3",
+      "video": "lemon.mp4"
     }
   ]
 }

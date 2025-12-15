@@ -35,6 +35,7 @@ dependencies:
   # Utils
   intl: ^0.19.0
   connectivity_plus: ^5.0.0
+  video_player: ^2.10.1
   
 
 dev_dependencies:
@@ -50,49 +51,64 @@ flutter:
   uses-material-design: true
 
   assets:
-    # Data files
-    - data/topics.json
-    - data/flashcards/animals_flashcards.json
-    - data/flashcards/fruits_flashcards.json
-    - data/flashcards/colors_flashcards.json
-    - data/flashcards/shapes_flashcards.json
-    - data/flashcards/vehicles_flashcards.json
-    - data/flashcards/alphabet_flashcards.json
-    - data/quizzes/animals_quizzes.json
-    - data/quizzes/fruits_quizzes.json
-    - data/quizzes/colors_quizzes.json
-    - data/quizzes/shapes_quizzes.json
-    - data/quizzes/vehicles_quizzes.json
-    - data/quizzes/alphabet_quizzes.json
-    - data/rewards.json
-    
-    # Images
-    - assets/images/
-    - assets/images/topics/
-    - assets/images/flashcards/
+    # JSON Data
+    - assets/data/topics.json
+    - assets/data/rewards.json
+    - assets/data/
+    - assets/data/flashcards/
+    - assets/data/quizzes/
+    - assets/data/options/
+     
+    # Images - Flashcards
     - assets/images/flashcards/animals/
-    - assets/images/flashcards/fruits/
     - assets/images/flashcards/colors/
-    - assets/images/flashcards/shapes/
-    - assets/images/flashcards/vehicles/
     - assets/images/flashcards/alphabet/
-    - assets/images/options/
-    - assets/images/quizzes/
-    
-    # Sounds
-    - assets/sounds/
-    - assets/sounds/flashcards/
+    - assets/images/flashcards/shapes/
+    - assets/images/flashcards/fruits/
+    - assets/images/flashcards/vehicles/
+
+    # Images - Quiz
+    - assets/images/quizzes/animals/
+    - assets/images/quizzes/colors/
+    - assets/images/quizzes/alphabet/
+    - assets/images/quizzes/shapes/
+    - assets/images/quizzes/fruits/
+    - assets/images/quizzes/vehicles/
+
+    # Images - Options
+    - assets/images/options/animals/
+    - assets/images/options/colors/
+    - assets/images/options/alphabet/
+    - assets/images/options/shapes/
+    - assets/images/options/fruits/
+    - assets/images/options/vehicles/
+
+    # Images - Topics
+    - assets/images/topics/
+
+    # Audio/Sounds - Flashcards
     - assets/sounds/flashcards/animals/
-    - assets/sounds/flashcards/fruits/
     - assets/sounds/flashcards/colors/
-    - assets/sounds/flashcards/shapes/
-    - assets/sounds/flashcards/vehicles/
     - assets/sounds/flashcards/alphabet/
-    - assets/sounds/options/
-    - assets/sounds/quizzes/
-    
-    # Animations
-    - assets/animations/
+    - assets/sounds/flashcards/shapes/
+    - assets/sounds/flashcards/fruits/
+    - assets/sounds/flashcards/vehicles/
+
+    # Audio/Sounds - Quiz
+    - assets/sounds/quizzes/animals/
+    - assets/sounds/quizzes/colors/
+    - assets/sounds/quizzes/alphabet/
+    - assets/sounds/quizzes/shapes/
+    - assets/sounds/quizzes/fruits/
+    - assets/sounds/quizzes/vehicles/
+
+    # Videos - Flashcards
+    - assets/videos/flashcards/animals/
+    - assets/videos/flashcards/colors/
+    - assets/videos/flashcards/alphabet/
+    - assets/videos/flashcards/shapes/
+    - assets/videos/flashcards/fruits/
+    - assets/videos/flashcards/vehicles/
 
   fonts:
     - family: Quicksand

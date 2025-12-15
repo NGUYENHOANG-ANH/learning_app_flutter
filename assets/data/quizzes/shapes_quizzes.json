@@ -1,0 +1,84 @@
+{
+  "version":  2,
+  "topicId": "shapes",
+  "metadata": {
+    "author":  "Team",
+    "lastUpdated": "2025-12-14",
+    "totalQuizzes": 5,
+    "difficultyRange": [1, 2]
+  },
+  "quizzes": [
+    {
+      "id": "quiz_shapes_001",
+      "question": "Find the Circle",
+      "questionType": "image",
+      "imageUrl":  "assets/images/quizzes/shapes/circle_quiz.png",
+      "sourceFlashcardId": "fc_shape_001",
+      "optionCount": 3,
+      "level": 1,
+      "timeLimit": null,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
+    },
+    {
+      "id": "quiz_shapes_002",
+      "question": "Which is the Square? ",
+      "questionType": "image",
+      "imageUrl":  "assets/images/quizzes/shapes/square_quiz.png",
+      "sourceFlashcardId": "fc_shape_002",
+      "optionCount": 3,
+      "level": 1,
+      "timeLimit": null,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
+    },
+    {
+      "id": "quiz_shapes_003",
+      "question": "Listen and find the shape",
+      "questionType": "audio",
+      "audioUrl":  "assets/sounds/quizzes/shapes/triangle_sound.mp3",
+      "sourceFlashcardId":  "fc_shape_004",
+      "optionCount":  4,
+      "level":  2,
+      "timeLimit": 15,
+      "reward": {
+        "baseStars": 2,
+        "perfectBonus":  1
+      }
+    },
+    {
+      "id":  "quiz_shapes_004",
+      "question": "Look and listen - what shape?",
+      "questionType": "mixed",
+      "imageUrl": "assets/images/quizzes/shapes/rectangle_quiz.png",
+      "audioUrl": "assets/sounds/quizzes/shapes/rectangle_sound.mp3",
+      "sourceFlashcardId": "fc_shape_003",
+      "optionCount":  4,
+      "level":  2,
+      "timeLimit": 20,
+      "reward": {
+        "baseStars": 2,
+        "perfectBonus": 1
+      }
+    },
+    {
+      "id": "quiz_shapes_005",
+      "question": "Look and listen - what shape?",
+      "questionType": "mixed",
+      "imageUrl": "assets/images/quizzes/shapes/diamond_quiz.png",
+      "audioUrl": "assets/sounds/quizzes/shapes/diamond_sound.mp3",
+      "sourceFlashcardId": "fc_shape_005",
+      "optionCount":  4,
+      "level":  2,
+      "timeLimit": 20,
+      "reward": {
+        "baseStars": 2,
+        "perfectBonus": 1
+      }
+    }
+  ]
+}

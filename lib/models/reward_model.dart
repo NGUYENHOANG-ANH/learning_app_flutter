@@ -2,19 +2,17 @@ class Reward {
   final String id;
   final String name;
   final String description;
-  final String animationUrl; // Lottie JSON hoặc Rive file
-  final int starsRequired; // Số sao cần để mở khóa
-  final String rewardType; // 'animation', 'sticker', 'badge', 'character'
-  final bool isUnlocked;
+  final int requiredStars;
+  final String icon; // Emoji icon
+  final String rarity; // 'common', 'rare', 'legendary'
 
-  Reward({
+  const Reward({
     required this.id,
     required this.name,
     required this.description,
-    required this.animationUrl,
-    required this.starsRequired,
-    required this.rewardType,
-    this.isUnlocked = false,
+    required this.requiredStars,
+    required this.icon,
+    required this.rarity,
   });
 
   factory Reward.fromJson(Map<String, dynamic> json) {
@@ -22,10 +20,9 @@ class Reward {
       id: json['id'] as String,
       name: json['name'] as String,
       description: json['description'] as String,
-      animationUrl: json['animationUrl'] as String,
-      starsRequired: json['starsRequired'] as int,
-      rewardType: json['rewardType'] as String,
-      isUnlocked: json['isUnlocked'] as bool? ?? false,
+      requiredStars: json['requiredStars'] as int,
+      icon: json['icon'] as String,
+      rarity: json['rarity'] as String,
     );
   }
 
@@ -34,10 +31,9 @@ class Reward {
       'id': id,
       'name': name,
       'description': description,
-      'animationUrl': animationUrl,
-      'starsRequired': starsRequired,
-      'rewardType': rewardType,
-      'isUnlocked': isUnlocked,
+      'requiredStars': requiredStars,
+      'icon': icon,
+      'rarity': rarity,
     };
   }
 }

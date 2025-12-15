@@ -15,62 +15,77 @@ class StorageService {
   static const String _settingsBoxName = 'app_settings';
   static const String _progressKey = 'progress_data';
 
-  Future<void> initialize() async {
-    // Hive đã được khởi tạo trong main.dart
+  /// Initialize Hive
+  static Future<void> initialize() async {
+    try {
+      await Hive.initFlutter();
+      print('✅ Hive initialized');
+    } catch (e) {
+      print('❌ Hive init error: $e');
+    }
   }
 
-  /// Lưu tiến độ người dùng
+  /// Save user progress
   Future<void> saveProgress(UserProgress progress) async {
     try {
       final box = await Hive.openBox<String>(_progressBoxName);
       await box.put(_progressKey, jsonEncode(progress.toJson()));
+      print('✅ Progress saved to Hive:   ${progress.totalStars}⭐');
     } catch (e) {
-      print('Error saving progress: $e');
+      print('❌ Error saving progress: $e');
     }
   }
 
-  /// Lấy tiến độ người dùng
+  /// Load user progress
   Future<UserProgress?> getProgress() async {
     try {
       final box = await Hive.openBox<String>(_progressBoxName);
       final data = box.get(_progressKey);
+
       if (data != null) {
-        return UserProgress.fromJson(jsonDecode(data));
+        final progress = UserProgress.fromJson(
+          jsonDecode(data) as Map<String, dynamic>,
+        );
+        print('✅ Progress loaded from Hive: ${progress.totalStars}⭐');
+        return progress;
       }
+
+      return null;
     } catch (e) {
-      print('Error loading progress: $e');
+      print('❌ Error loading progress: $e');
+      return null;
     }
-    return null;
   }
 
-  /// Lưu cài đặt
+  /// Save app setting
   Future<void> saveSetting(String key, dynamic value) async {
     try {
       final box = await Hive.openBox<dynamic>(_settingsBoxName);
       await box.put(key, value);
     } catch (e) {
-      print('Error saving setting: $e');
+      print('❌ Error saving setting: $e');
     }
   }
 
-  /// Lấy cài đặt
+  /// Get app setting
   Future<dynamic> getSetting(String key, {dynamic defaultValue}) async {
     try {
       final box = await Hive.openBox<dynamic>(_settingsBoxName);
       return box.get(key, defaultValue: defaultValue);
     } catch (e) {
-      print('Error loading setting: $e');
+      print('❌ Error loading setting: $e');
       return defaultValue;
     }
   }
 
-  /// Xóa dữ liệu
+  /// Clear all data
   Future<void> clearAll() async {
     try {
       await Hive.deleteBoxFromDisk(_progressBoxName);
       await Hive.deleteBoxFromDisk(_settingsBoxName);
+      print('✅ All Hive data cleared');
     } catch (e) {
-      print('Error clearing storage: $e');
+      print('❌ Error clearing storage: $e');
     }
   }
 }

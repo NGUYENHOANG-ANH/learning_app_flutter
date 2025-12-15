@@ -1,0 +1,83 @@
+{
+  "version": 2,
+  "topicId": "vehicles",
+  "metadata": {
+    "author": "Team",
+    "lastUpdated": "2025-12-14",
+    "totalQuizzes": 5,
+    "difficultyRange": [1, 3]
+  },
+  "quizzes": [
+    {
+      "id": "quiz_vehicles_001",
+      "question":  "What vehicle is this?",
+      "questionType": "image",
+      "imageUrl": "assets/images/quizzes/vehicles/car_quiz.png",
+      "sourceFlashcardId": "fc_vehicle_001",
+      "optionCount": 3,
+      "level": 1,
+      "timeLimit": null,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
+    },
+    {
+      "id": "quiz_vehicles_002",
+      "question": "Which is the Bus?",
+      "questionType":  "image",
+      "imageUrl": "assets/images/quizzes/vehicles/bus_quiz. png",
+      "sourceFlashcardId": "fc_vehicle_002",
+      "optionCount": 3,
+      "level": 1,
+      "timeLimit": null,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
+    },
+    {
+      "id": "quiz_vehicles_003",
+      "question":  "Find the Bicycle",
+      "questionType": "image",
+      "imageUrl": "assets/images/quizzes/vehicles/bicycle_quiz.png",
+      "sourceFlashcardId":  "fc_vehicle_003",
+      "optionCount": 4,
+      "level": 1,
+      "timeLimit": 15,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
+    },
+    {
+      "id": "quiz_vehicles_004",
+      "question": "Listen and find the vehicle",
+      "questionType": "audio",
+      "audioUrl": "assets/sounds/quizzes/vehicles/airplane_sound.mp3",
+      "sourceFlashcardId":  "fc_vehicle_005",
+      "optionCount":  4,
+      "level":  2,
+      "timeLimit": 15,
+      "reward": {
+        "baseStars": 2,
+        "perfectBonus":  1
+      }
+    },
+    {
+      "id":  "quiz_vehicles_005",
+      "question": "Look and listen - what vehicle?",
+      "questionType": "mixed",
+      "imageUrl": "assets/images/quizzes/vehicles/train_quiz.png",
+      "audioUrl": "assets/sounds/quizzes/vehicles/train_sound.mp3",
+      "sourceFlashcardId": "fc_vehicle_004",
+      "optionCount": 4,
+      "level": 3,
+      "timeLimit": 20,
+      "reward": {
+        "baseStars": 3,
+        "perfectBonus":  1
+      }
+    }
+  ]
+}

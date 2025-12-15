@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'topic_selection_screen.dart';
+import 'progress_screen.dart';
+import 'reward_screen.dart';
+import 'settings_screen.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
 import '../widgets/bottom_navigation.dart';
@@ -15,6 +18,20 @@ class HomeScreen extends ConsumerWidget {
         title: const Text('🎓 Flashcard Learning'),
         elevation: 0,
         backgroundColor: AppColors.primaryPastel,
+        actions: [
+          // Settings button in AppBar
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SettingsScreen(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
@@ -54,7 +71,7 @@ class HomeScreen extends ConsumerWidget {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      'Hôm nay con muốn học gì nào?',
+                      'Hôm nay con muốn học gì nào? ',
                       style: AppTextStyles.bodyMedium,
                       textAlign: TextAlign.center,
                     ),
@@ -110,9 +127,29 @@ class HomeScreen extends ConsumerWidget {
                 subtitle: 'Kiểm tra thành tích của con',
                 color: AppColors.accentPastel,
                 onPressed: () {
-                  // TODO: Navigate to progress screen
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Tính năng sắp ra mắt!')),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProgressScreen(),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: 16),
+
+              // Rewards button
+              _buildActionButton(
+                context,
+                icon: '🎁',
+                title: 'Phần Thưởng',
+                subtitle: 'Xem các thành tích đã mở khóa',
+                color: const Color(0xFFFFD93D),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RewardScreen(),
+                    ),
                   );
                 },
               ),

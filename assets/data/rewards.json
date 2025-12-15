@@ -1,0 +1,25 @@
+{
+  "rewardRules": {
+    "quiz": {
+      "baseStars": 1,
+      "maxStars": 3
+    }
+  },
+
+  "bonusRewards": {
+    "perfectQuiz": {
+      "stars": 1,
+      "showAnimation": true
+    }
+  },
+
+  "unlockRules": {
+    "topic": {
+      "starsRequired": {
+        "animals": 0,
+        "shapes": 5,
+        "colors": 10
+      }
+    }
+  }
+}

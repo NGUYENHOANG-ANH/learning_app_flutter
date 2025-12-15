@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "lastUpdated": "2025-12-14",
+  "quizzes": {
+    "animals":  {
+      "file": "animals_quizzes.json",
+      "version": 2,
+      "totalQuizzes": 5,
+      "difficultiesAvailable": [1, 2],
+      "quizTypes": ["image", "audio", "mixed"],
+      "lastUpdated": "2025-12-14"
+    },
+    "colors": {
+      "file": "colors_quizzes.json",
+      "version": 2,
+      "totalQuizzes":  4,
+      "difficultiesAvailable": [1, 2],
+      "quizTypes": ["image"],
+      "lastUpdated": "2025-12-14"
+    },
+    "alphabet": {
+      "file": "alphabet_quizzes.json",
+      "version": 2,
+      "totalQuizzes":  10,
+      "difficultiesAvailable": [1, 2],
+      "quizTypes": ["image"],
+      "lastUpdated": "2025-12-14"
+    },
+    "shapes": {
+      "file": "shapes_quizzes.json",
+      "version": 2,
+      "totalQuizzes":  5,
+      "difficultiesAvailable": [1, 2],
+      "quizTypes": ["image", "audio", "mixed"],
+      "lastUpdated": "2025-12-14"
+    },
+    "fruits": {
+      "file": "fruits_quizzes.json",
+      "version": 2,
+      "totalQuizzes":  5,
+      "difficultiesAvailable": [1, 2],
+      "quizTypes": ["image", "mixed"],
+      "lastUpdated":  "2025-12-14"
+    },
+    "vehicles":  {
+      "file": "vehicles_quizzes.json",
+      "version": 2,
+      "totalQuizzes": 5,
+      "difficultiesAvailable": [1, 3],
+      "quizTypes":  ["image", "audio", "mixed"],
+      "lastUpdated":  "2025-12-14"
+    }
+  }
+}

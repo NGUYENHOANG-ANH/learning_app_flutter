@@ -2,85 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'flashcard_screen.dart';
 import 'quiz_screen.dart';
+import '../services/data_service.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
 import '../models/topic_model.dart';
+import '../providers/progress_provider.dart';
 
 class TopicSelectionScreen extends ConsumerWidget {
   final String mode; // 'flashcard' or 'quiz'
 
   const TopicSelectionScreen({Key? key, required this.mode}) : super(key: key);
 
-  // Mock topics list
-  static final List<Topic> _mockTopics = [
-    Topic(
-      id: 'animals',
-      name: '🦁 Động Vật',
-      description: 'Học tên các động vật',
-      iconUrl: 'assets/images/topics/animals_icon.png',
-      color: '#FF6B6B',
-      totalFlashcards: 12,
-      totalQuizzes: 10,
-      isLocked: false,
-    ),
-    Topic(
-      id: 'fruits',
-      name: '🍎 Trái Cây',
-      description: 'Học tên các trái cây',
-      iconUrl: 'assets/images/topics/fruits_icon.png',
-      color: '#FFD93D',
-      totalFlashcards: 10,
-      totalQuizzes: 8,
-      isLocked: false,
-    ),
-    Topic(
-      id: 'colors',
-      name: '🎨 Màu Sắc',
-      description: 'Nhận diện các màu sắc',
-      iconUrl: 'assets/images/topics/colors_icon.png',
-      color: '#6BCB77',
-      totalFlashcards: 8,
-      totalQuizzes: 6,
-      isLocked: false,
-    ),
-    Topic(
-      id: 'shapes',
-      name: '⭕ Hình Dạng',
-      description: 'Học các hình dạng cơ bản',
-      iconUrl: 'assets/images/topics/shapes_icon.png',
-      color: '#4D96FF',
-      totalFlashcards: 7,
-      totalQuizzes: 5,
-      isLocked: true,
-      requiredStars: 10,
-    ),
-    Topic(
-      id: 'vehicles',
-      name: '🚗 Phương Tiện',
-      description: 'Nhận diện phương tiện',
-      iconUrl: 'assets/images/topics/vehicles_icon.png',
-      color: '#FF6B9D',
-      totalFlashcards: 9,
-      totalQuizzes: 7,
-      isLocked: true,
-      requiredStars: 20,
-    ),
-    Topic(
-      id: 'alphabet',
-      name: '🔤 Bảng Chữ Cái',
-      description: 'Học Alphabet A-Z',
-      iconUrl: 'assets/images/topics/alphabet_icon.png',
-      color: '#F38181',
-      totalFlashcards: 26,
-      totalQuizzes: 20,
-      isLocked: false,
-    ),
-  ];
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final title =
         mode == 'flashcard' ? '📚 Chọn Chủ Đề Học' : '🎮 Chọn Chủ Đề Quiz';
+
+    // ✅ Watch user progress for unlock status
+    final userProgress = ref.watch(userProgressProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -91,32 +30,78 @@ class TopicSelectionScreen extends ConsumerWidget {
         ),
       ),
       backgroundColor: AppColors.backgroundColor,
-      body: GridView.builder(
-        padding: const EdgeInsets.all(16),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 0.85,
-          crossAxisSpacing: 12,
-          mainAxisSpacing: 12,
-        ),
-        itemCount: _mockTopics.length,
-        itemBuilder: (context, index) {
-          final topic = _mockTopics[index];
-          return _buildTopicCard(context, topic);
+      body: FutureBuilder<List<Topic>>(
+        future: DataService().loadTopics(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          if (snapshot.hasError) {
+            return Center(
+              child: Text('Lỗi: ${snapshot.error}'),
+            );
+          }
+
+          final topics = snapshot.data ?? [];
+
+          if (topics.isEmpty) {
+            return const Center(
+              child: Text('Không có topics'),
+            );
+          }
+
+          return GridView.builder(
+            padding: const EdgeInsets.all(16),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 0.85,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+            ),
+            itemCount: topics.length,
+            itemBuilder: (context, index) {
+              final topic = topics[index];
+
+              // ✅ Check if topic is unlocked based on stars
+              final totalStars = userProgress.totalStars;
+              final isUnlocked = totalStars >= topic.requiredStars;
+
+              return _buildTopicCard(
+                context,
+                topic,
+                mode,
+                isUnlocked: isUnlocked,
+                totalStars: totalStars,
+              );
+            },
+          );
         },
       ),
     );
   }
 
-  Widget _buildTopicCard(BuildContext context, Topic topic) {
+  Widget _buildTopicCard(
+    BuildContext context,
+    Topic topic,
+    String mode, {
+    required bool isUnlocked,
+    required int totalStars,
+  }) {
     final color = Color(int.parse(topic.color.replaceFirst('#', '0xff')));
 
     return GestureDetector(
-      onTap: topic.isLocked
+      onTap: !isUnlocked
           ? () {
+              // ✅ Show unlock requirement
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text('Mở khóa sau khi đạt ${topic.requiredStars} ⭐'),
+                  content: Text(
+                    '🔒 Cần ${topic.requiredStars} ⭐ để mở khóa (bạn có:  $totalStars ⭐)',
+                  ),
+                  duration: const Duration(seconds: 3),
                 ),
               );
             }
@@ -139,13 +124,15 @@ class TopicSelectionScreen extends ConsumerWidget {
             },
       child: Container(
         decoration: BoxDecoration(
-          color: topic.isLocked ? Colors.grey[300] : color,
+          color: isUnlocked ? color : Colors.grey[300],
           borderRadius: BorderRadius.circular(20),
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
-              color: AppColors.shadowColor,
+              color: isUnlocked
+                  ? color.withOpacity(0.3)
+                  : Colors.grey.withOpacity(0.2),
               blurRadius: 8,
-              offset: Offset(0, 4),
+              offset: const Offset(0, 4),
             ),
           ],
         ),
@@ -156,7 +143,7 @@ class TopicSelectionScreen extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Opacity(
-                  opacity: topic.isLocked ? 0.5 : 1.0,
+                  opacity: isUnlocked ? 1.0 : 0.5,
                   child: Text(
                     topic.name.split(' ')[0], // Just emoji
                     style: const TextStyle(fontSize: 48),
@@ -169,7 +156,7 @@ class TopicSelectionScreen extends ConsumerWidget {
                     topic.name.split(' ').sublist(1).join(' '),
                     textAlign: TextAlign.center,
                     style: AppTextStyles.heading3.copyWith(
-                      color: Colors.white,
+                      color: isUnlocked ? Colors.white : Colors.grey[600],
                       fontSize: 16,
                     ),
                     maxLines: 2,
@@ -178,11 +165,11 @@ class TopicSelectionScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: 8),
                 Opacity(
-                  opacity: topic.isLocked ? 0.5 : 0.8,
+                  opacity: isUnlocked ? 0.8 : 0.5,
                   child: Text(
                     '${topic.totalFlashcards} thẻ',
                     style: AppTextStyles.bodySmall.copyWith(
-                      color: Colors.white70,
+                      color: isUnlocked ? Colors.white70 : Colors.grey[500],
                       fontSize: 12,
                     ),
                   ),
@@ -190,18 +177,65 @@ class TopicSelectionScreen extends ConsumerWidget {
               ],
             ),
 
-            // Lock icon overlay
-            if (topic.isLocked)
+            // Lock icon or check
+            if (!isUnlocked)
               Positioned(
-                top: 8,
-                right: 8,
+                top: 12,
+                right: 12,
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 4,
+                      ),
+                    ],
+                  ),
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(
+                        Icons.lock,
+                        color: Colors.grey,
+                        size: 20,
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        '${topic.requiredStars}⭐',
+                        style: const TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            else
+              Positioned(
+                top: 12,
+                right: 12,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.correctGreen,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.correctGreen.withOpacity(0.3),
+                        blurRadius: 4,
+                      ),
+                    ],
                   ),
                   padding: const EdgeInsets.all(6),
-                  child: const Icon(Icons.lock, color: Colors.grey, size: 20),
+                  child: const Icon(
+                    Icons.check,
+                    color: Colors.white,
+                    size: 18,
+                  ),
                 ),
               ),
           ],

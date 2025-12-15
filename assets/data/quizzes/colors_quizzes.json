@@ -1,51 +1,68 @@
 {
+  "version": 2,
+  "topicId": "colors",
+  "metadata": {
+    "author": "Team",
+    "lastUpdated": "2025-12-14",
+    "totalQuizzes": 4,
+    "difficultyRange": [1, 2]
+  },
   "quizzes": [
     {
-      "id": "quiz_color_001",
-      "topicId": "colors",
-      "question": "Màu này là gì?",
-      "questionType": "image",
-      "imageUrl": "assets/images/quizzes/colors/red_quiz.png",
-      "options": [
-        {
-          "id": "opt_c_001_1",
-          "text":  "Red",
-          "imageUrl": "assets/images/options/colors/red_small.png"
-        },
-        {
-          "id": "opt_c_001_2",
-          "text": "Blue",
-          "imageUrl": "assets/images/options/colors/blue_small.png"
-        }
-      ],
-      "correctAnswerId": "opt_c_001_1",
-      "level":  1
+      "id": "quiz_colors_001",
+      "question": "Find the RED color",
+      "questionType":  "image",
+      "imageUrl": "assets/images/quizzes/colors/red_quiz. png",
+      "sourceFlashcardId": "fc_color_001",
+      "optionCount": 3,
+      "level": 1,
+      "timeLimit": null,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
     },
     {
-      "id": "quiz_color_002",
-      "topicId": "colors",
-      "question": "Tìm màu xanh lá",
+      "id": "quiz_colors_002",
+      "question":  "Which color is BLUE?",
       "questionType": "image",
-      "imageUrl": "assets/images/quizzes/colors/green_quiz.png",
-      "options": [
-        {
-          "id": "opt_c_002_1",
-          "text": "Yellow",
-          "imageUrl": "assets/images/options/colors/yellow_small.png"
-        },
-        {
-          "id": "opt_c_002_2",
-          "text": "Green",
-          "imageUrl":  "assets/images/options/colors/green_small.png"
-        },
-        {
-          "id": "opt_c_002_3",
-          "text":  "Blue",
-          "imageUrl": "assets/images/options/colors/blue_small.png"
-        }
-      ],
-      "correctAnswerId": "opt_c_002_2",
-      "level": 2
+      "imageUrl": "assets/images/quizzes/colors/blue_quiz.png",
+      "sourceFlashcardId": "fc_color_002",
+      "optionCount": 3,
+      "level": 1,
+      "timeLimit": null,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
+    },
+    {
+      "id": "quiz_colors_003",
+      "question": "Find the YELLOW color",
+      "questionType": "image",
+      "imageUrl": "assets/images/quizzes/colors/yellow_quiz.png",
+      "sourceFlashcardId": "fc_color_003",
+      "optionCount": 4,
+      "level": 1,
+      "timeLimit": 15,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus":  1
+      }
+    },
+    {
+      "id":  "quiz_colors_004",
+      "question": "Which is GREEN?",
+      "questionType":  "image",
+      "imageUrl": "assets/images/quizzes/colors/green_quiz. png",
+      "sourceFlashcardId": "fc_color_004",
+      "optionCount": 4,
+      "level": 2,
+      "timeLimit": 20,
+      "reward": {
+        "baseStars": 2,
+        "perfectBonus":  1
+      }
     }
   ]
 }

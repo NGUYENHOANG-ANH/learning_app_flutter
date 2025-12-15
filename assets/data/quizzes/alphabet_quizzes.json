@@ -1,0 +1,152 @@
+{
+  "version": 2,
+  "topicId": "alphabet",
+  "metadata": {
+    "author": "Team",
+    "lastUpdated": "2025-12-14",
+    "totalQuizzes": 10,
+    "difficultyRange": [1, 2]
+  },
+  "quizzes": [
+    {
+      "id": "quiz_alpha_001",
+      "question":  "Find letter A",
+      "questionType":  "image",
+      "imageUrl": "assets/images/quizzes/alphabet/a_quiz. png",
+      "sourceFlashcardId": "fc_alpha_001",
+      "optionCount": 2,
+      "level": 1,
+      "timeLimit": null,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus":  1
+      }
+    },
+    {
+      "id":  "quiz_alpha_002",
+      "question": "Which is B?",
+      "questionType": "image",
+      "imageUrl": "assets/images/quizzes/alphabet/b_quiz.png",
+      "sourceFlashcardId": "fc_alpha_002",
+      "optionCount": 3,
+      "level": 1,
+      "timeLimit": null,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus":  1
+      }
+    },
+    {
+      "id":  "quiz_alpha_003",
+      "question": "Find the C",
+      "questionType":  "image",
+      "imageUrl": "assets/images/quizzes/alphabet/c_quiz. png",
+      "sourceFlashcardId": "fc_alpha_003",
+      "optionCount": 3,
+      "level": 1,
+      "timeLimit": null,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus":  1
+      }
+    },
+    {
+      "id":  "quiz_alpha_004",
+      "question": "Which letter is D?",
+      "questionType": "image",
+      "imageUrl": "assets/images/quizzes/alphabet/d_quiz.png",
+      "sourceFlashcardId": "fc_alpha_004",
+      "optionCount": 3,
+      "level": 1,
+      "timeLimit": null,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus":  1
+      }
+    },
+    {
+      "id":  "quiz_alpha_005",
+      "question": "Find the E",
+      "questionType": "image",
+      "imageUrl":  "assets/images/quizzes/alphabet/e_quiz.png",
+      "sourceFlashcardId": "fc_alpha_005",
+      "optionCount": 3,
+      "level": 2,
+      "timeLimit": 10,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus":  1
+      }
+    },
+    {
+      "id":  "quiz_alpha_006",
+      "question": "Which is F?",
+      "questionType":  "image",
+      "imageUrl": "assets/images/quizzes/alphabet/f_quiz. png",
+      "sourceFlashcardId": "fc_alpha_006",
+      "optionCount": 3,
+      "level": 2,
+      "timeLimit": 10,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus":  1
+      }
+    },
+    {
+      "id":  "quiz_alpha_007",
+      "question": "Find the G",
+      "questionType": "image",
+      "imageUrl":  "assets/images/quizzes/alphabet/g_quiz.png",
+      "sourceFlashcardId": "fc_alpha_007",
+      "optionCount": 3,
+      "level": 2,
+      "timeLimit": 10,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
+    },
+    {
+      "id": "quiz_alpha_008",
+      "question":  "Which letter is H?",
+      "questionType": "image",
+      "imageUrl": "assets/images/quizzes/alphabet/h_quiz.png",
+      "sourceFlashcardId": "fc_alpha_008",
+      "optionCount": 4,
+      "level": 2,
+      "timeLimit": 10,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus":  1
+      }
+    },
+    {
+      "id":  "quiz_alpha_009",
+      "question": "Find the I",
+      "questionType": "image",
+      "imageUrl":  "assets/images/quizzes/alphabet/i_quiz.png",
+      "sourceFlashcardId": "fc_alpha_009",
+      "optionCount": 3,
+      "level": 2,
+      "timeLimit": 10,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
+    },
+    {
+      "id": "quiz_alpha_010",
+      "question": "Which is J?",
+      "questionType": "image",
+      "imageUrl": "assets/images/quizzes/alphabet/j_quiz.png",
+      "sourceFlashcardId": "fc_alpha_010",
+      "optionCount": 3,
+      "level": 2,
+      "timeLimit": 10,
+      "reward": {
+        "baseStars": 1,
+        "perfectBonus": 1
+      }
+    }
+  ]
+}

@@ -1,255 +1,357 @@
 import 'package:flutter/material.dart';
-import '../models/flashcard_model.dart';
+import 'package:learning_app/services/audio_service.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
+import 'flashcard_video_player.dart';
+import 'tts_button.dart'; // ✅ IMPORT TTS BUTTON
 
 class FlashcardWidget extends StatefulWidget {
-  final Flashcard flashcard;
-  final VoidCallback onAudioTap;
+  final String id; // ✅ Flashcard ID cho TTS tracking
+  final String frontText; // Lion
+  final String pronunciation; // LEE-UN
+  final String vietnameseName; // Sư tử
+  final String description; // Mô tả
+  final String? imageUrl; // Ảnh 2D
+  final String? videoPath; // Video
+  final VoidCallback? onFlip;
 
   const FlashcardWidget({
     Key? key,
-    required this.flashcard,
-    required this.onAudioTap,
+    required this.id,
+    required this.frontText,
+    required this.pronunciation,
+    required this.vietnameseName,
+    required this.description,
+    this.imageUrl,
+    this.videoPath,
+    this.onFlip,
   }) : super(key: key);
 
   @override
   State<FlashcardWidget> createState() => _FlashcardWidgetState();
 }
 
+Widget _buildPlaceholder(String message) {
+  return Center(
+    child: Text(
+      message,
+      style: const TextStyle(
+        fontSize: 16,
+        color: Colors.grey,
+      ),
+    ),
+  );
+}
+
 class _FlashcardWidgetState extends State<FlashcardWidget>
     with SingleTickerProviderStateMixin {
-  late AnimationController _flipController;
+  late AnimationController _controller;
+  late final AudioService _audioService = AudioService();
   bool _isFlipped = false;
 
   @override
   void initState() {
     super.initState();
-    _flipController = AnimationController(
-      duration: const Duration(milliseconds: 600),
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 400),
       vsync: this,
     );
   }
 
   @override
   void dispose() {
-    _flipController.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
-  void _toggleFlip() {
+  void _flip() {
     if (_isFlipped) {
-      _flipController.reverse();
+      _controller.reverse();
     } else {
-      _flipController.forward();
+      _controller.forward();
     }
     setState(() {
       _isFlipped = !_isFlipped;
     });
-  }
-
-  // ✅ THÊM METHOD _buildFrontSide
-  Widget _buildFrontSide() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        // Hình ảnh
-        Container(
-          width: 200,
-          height: 200,
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Center(
-            child: Icon(
-              Icons.image,
-              size: 80,
-              color: Colors.grey[400],
-            ),
-          ),
-        ),
-        const SizedBox(height: 24),
-        // Từ tiếng Anh
-        Text(
-          widget.flashcard.word,
-          style: AppTextStyles.heading2.copyWith(
-            color: AppColors.textPrimary,
-          ),
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 12),
-        // Phát âm
-        Text(
-          widget.flashcard.pronunciation,
-          style: AppTextStyles.pronunciation,
-        ),
-      ],
-    );
-  }
-
-  // ✅ THÊM METHOD _buildFlippedSide
-  Widget _buildFlippedSide() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        // Tên tiếng Việt (nếu có)
-        if (widget.flashcard.vietnameseName != null) ...[
-          Text(
-            'Tiếng Việt:  ',
-            style: AppTextStyles.bodySmall.copyWith(
-              color: AppColors.textSecondary,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            widget.flashcard.vietnameseName!,
-            style: AppTextStyles.heading2.copyWith(
-              color: AppColors.primaryPastel,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 24),
-        ],
-        // Mô tả (nếu có)
-        if (widget.flashcard.description != null) ...[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              widget.flashcard.description!,
-              style: AppTextStyles.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const SizedBox(height: 24),
-        ],
-        // Biểu tượng lật
-        const Icon(
-          Icons.flip,
-          size: 40,
-          color: AppColors.primaryPastel,
-        ),
-        const SizedBox(height: 12),
-        Text(
-          'Nhấn để lật lại',
-          style: AppTextStyles.bodySmall.copyWith(
-            color: AppColors.textSecondary,
-          ),
-        ),
-      ],
-    );
+    widget.onFlip?.call();
   }
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // Flip animation card
-          GestureDetector(
-            onTap: _toggleFlip,
-            child: AnimatedBuilder(
-              animation: _flipController,
-              builder: (context, child) {
-                final angle = _flipController.value * 3.14159;
-                final transform = Matrix4.identity()
-                  ..setEntry(3, 2, 0.001)
-                  ..rotateY(angle);
+    return GestureDetector(
+      onTap: _flip,
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          final angle = _controller.value * 3.14159265359;
+          final transform = Matrix4.identity()
+            ..setEntry(3, 2, 0.001)
+            ..rotateY(angle);
 
-                return Transform(
-                  alignment: Alignment.center,
-                  transform: transform,
-                  child: Container(
-                    height: 320,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(25),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: AppColors.shadowColor,
-                          blurRadius: 15,
-                          offset: Offset(0, 8),
-                        ),
-                      ],
-                    ),
-                    child: Center(
-                      child:
-                          _isFlipped ? _buildFlippedSide() : _buildFrontSide(),
-                    ),
+          return Transform(
+            alignment: Alignment.center,
+            transform: transform,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: const [
+                  BoxShadow(
+                    color: AppColors.shadowColor,
+                    blurRadius: 12,
+                    offset: Offset(0, 4),
                   ),
-                );
-              },
+                ],
+              ),
+              child: _isFlipped
+                  ? _buildBackSide() // ⭐ VIDEO
+                  : _buildFrontSide(), // ⭐ ẢNH + MÔ TẢ + TTS
             ),
-          ),
-          const SizedBox(height: 32),
+          );
+        },
+      ),
+    );
+  }
 
-          // Flip hint text
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: AppColors.accentPastel.withOpacity(0.3),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
+  // ⭐ MẶT TRƯỚC - Ảnh + Phát âm + Mô tả + TTS BUTTON
+  Widget _buildFrontSide() {
+    return Transform(
+      alignment: Alignment.center,
+      transform: Matrix4.identity(),
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // ✅ Word Title + TTS Button (CHỈ CÓ TTS BUTTON NÀY)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.touch_app, size: 16, color: Colors.orange),
-                const SizedBox(width: 8),
-                Text(
-                  _isFlipped ? 'Nhấn để xem hình' : 'Nhấn để lật thẻ',
-                  style: AppTextStyles.bodySmall.copyWith(
-                    color: Colors.orange[800],
+                Flexible(
+                  child: Text(
+                    widget.frontText,
+                    style: AppTextStyles.heading1,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
                   ),
+                ),
+                const SizedBox(width: 12),
+                // 🔊 TTS Button - Phát âm từ tiếng Anh
+                TtsButton(
+                  text: widget.frontText, // "Dog"
+                  wordId: widget.id, // "fc_animal_003"
+                  size: 45,
+                  bgColor: AppColors.accentColor.withValues(alpha: 0.15),
+                  iconColor: AppColors.accentColor,
                 ),
               ],
             ),
-          ),
-          const SizedBox(height: 32),
+            const SizedBox(height: 20),
 
-          // Audio button
-          ElevatedButton.icon(
-            onPressed: widget.onAudioTap,
-            icon: const Icon(Icons.volume_up, size: 24),
-            label: const Text('Phát âm'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primaryPastel,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 32,
-                vertical: 14,
+            // ✅ IMAGE (2D)
+            if (widget.imageUrl != null && widget.imageUrl!.isNotEmpty)
+              Container(
+                width: 200,
+                height: 200,
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Image.asset(
+                  widget.imageUrl!, // Already full path from screen
+                  fit: BoxFit.contain,
+                  errorBuilder: (context, error, stackTrace) {
+                    print('❌ Image load error: $error');
+                    return _buildPlaceholder('Image not found');
+                  },
+                ),
+              )
+            else
+              // Fallback:   Emoji
+              const Text(
+                '🖼️',
+                style: TextStyle(fontSize: 80),
               ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
+
+            const SizedBox(height: 20),
+
+            // ✅ Pronunciation (KHÔNG CÓ TTS BUTTON)
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 12,
+              ),
+              decoration: BoxDecoration(
+                color: AppColors.accentColor.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    '🎤 Phát âm',
+                    style: AppTextStyles.bodySmall.copyWith(
+                      color: Colors.grey[600],
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    widget.pronunciation,
+                    style: AppTextStyles.heading3.copyWith(
+                      color: AppColors.accentColor,
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
 
-          // Optional: Sound effect button
-          // ✅ SỬA:  Đóng đúng dấu ngoặc
-          if (widget.flashcard.soundUrl != null) ...[
             const SizedBox(height: 12),
-            OutlinedButton.icon(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Đang phát âm thanh đặc trưng... '),
+
+            // ✅ Vietnamese Name
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 12,
+              ),
+              decoration: BoxDecoration(
+                color: AppColors.primaryColor.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    '🇻🇳 Tiếng Việt',
+                    style: AppTextStyles.bodySmall.copyWith(
+                      color: Colors.grey[600],
+                    ),
                   ),
-                );
-              },
-              icon: const Icon(Icons.music_note),
-              label: const Text('Âm thanh đặc trưng'),
-              style: OutlinedButton.styleFrom(
-                foregroundColor: AppColors.primaryPastel,
-                side: const BorderSide(
-                  color: AppColors.primaryPastel,
-                  width: 2,
-                ),
+                  const SizedBox(height: 4),
+                  Text(
+                    widget.vietnameseName,
+                    style: AppTextStyles.heading3.copyWith(
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            // ✅ Description
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 12,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.blue[50],
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    '📖 Mô tả',
+                    style: AppTextStyles.bodySmall.copyWith(
+                      color: Colors.grey[600],
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    widget.description,
+                    style: AppTextStyles.bodyMedium,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 24),
+
+            // ✅ Flip Hint
+            Text(
+              '👉 Tap to see video →',
+              style: AppTextStyles.bodySmall.copyWith(
+                color: Colors.grey[500],
+                fontStyle: FontStyle.italic,
               ),
             ),
           ],
-        ],
+        ),
+      ),
+    );
+  }
+
+  // ⭐ MẶT SAU - VIDEO (GIỮ NGUYÊN)
+  Widget _buildBackSide() {
+    return Transform(
+      alignment: Alignment.center,
+      transform: Matrix4.identity()..rotateY(3.14159265359),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // ✅ Title
+            Text(
+              'Watch & Learn',
+              style: AppTextStyles.heading2.copyWith(
+                color: AppColors.accentColor,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 20),
+
+            // ✅ VIDEO PLAYER
+            if (widget.videoPath != null && widget.videoPath!.isNotEmpty)
+              Expanded(
+                child: FlashcardVideoPlayer(
+                  videoPath: widget.videoPath!,
+                  onVideoEnd: () {
+                    print('${widget.frontText} video ended');
+                  },
+                ),
+              )
+            else
+              // Fallback: No video available
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.video_library_outlined,
+                          size: 60,
+                          color: Colors.grey[400],
+                        ),
+                        const SizedBox(height: 12),
+                        Text(
+                          'Video không có',
+                          style: TextStyle(color: Colors.grey[600]),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+            const SizedBox(height: 20),
+
+            // ✅ Flip Back Hint
+            Text(
+              '← Tap to go back',
+              style: AppTextStyles.bodySmall.copyWith(
+                color: Colors.grey[500],
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

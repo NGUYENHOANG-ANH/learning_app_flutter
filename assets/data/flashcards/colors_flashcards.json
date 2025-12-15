@@ -1,92 +1,98 @@
 {
+  "topicId": "colors",
+  "assetBase":  {
+    "image": "assets/images/flashcards/colors/",
+    "audio": "assets/sounds/flashcards/colors/",
+    "video":  "assets/videos/flashcards/colors/"
+  },
   "flashcards": [
     {
       "id": "fc_color_001",
       "word": "Red",
       "pronunciation": "/rɛd/",
-      "imageUrl": "assets/images/flashcards/colors/red.png",
-      "audioUrl": "assets/sounds/flashcards/colors/red_word.mp3",
-      "topicId": "colors",
+      "difficulty":  1,
       "vietnameseName": "Đỏ",
-      "description":  "The color of blood and fire",
-      "difficulty": 1
+      "description": "The color of blood and fire",
+      "image": "red.png",
+      "audio": "red.mp3",
+      "video": "red.mp4"
     },
     {
       "id": "fc_color_002",
-      "word":  "Blue",
-      "pronunciation":  "/bluː/",
-      "imageUrl": "assets/images/flashcards/colors/blue.png",
-      "audioUrl": "assets/sounds/flashcards/colors/blue_word.mp3",
-      "topicId": "colors",
+      "word": "Blue",
+      "pronunciation": "/bluː/",
+      "difficulty":  1,
       "vietnameseName": "Xanh nước biển",
       "description": "The color of the sky",
-      "difficulty": 1
+      "image": "blue. png",
+      "audio": "blue.mp3",
+      "video": "blue.mp4"
     },
     {
       "id": "fc_color_003",
       "word": "Yellow",
       "pronunciation": "/ˈjɛloʊ/",
-      "imageUrl": "assets/images/flashcards/colors/yellow. png",
-      "audioUrl":  "assets/sounds/flashcards/colors/yellow_word.mp3",
-      "topicId": "colors",
+      "difficulty": 1,
       "vietnameseName": "Vàng",
       "description":  "The color of the sun",
-      "difficulty": 1
+      "image": "yellow.png",
+      "audio": "yellow.mp3",
+      "video": "yellow.mp4"
     },
     {
       "id": "fc_color_004",
       "word": "Green",
       "pronunciation": "/ɡriːn/",
-      "imageUrl": "assets/images/flashcards/colors/green.png",
-      "audioUrl": "assets/sounds/flashcards/colors/green_word. mp3",
-      "topicId": "colors",
+      "difficulty": 1,
       "vietnameseName": "Xanh lá",
       "description": "The color of grass and trees",
-      "difficulty": 1
+      "image": "green.png",
+      "audio":  "green.mp3",
+      "video": "green.mp4"
     },
     {
       "id": "fc_color_005",
-      "word": "Purple",
+      "word":  "Purple",
       "pronunciation": "/ˈpɜːrpəl/",
-      "imageUrl": "assets/images/flashcards/colors/purple.png",
-      "audioUrl": "assets/sounds/flashcards/colors/purple_word.mp3",
-      "topicId": "colors",
+      "difficulty":  1,
       "vietnameseName": "Tím",
       "description": "The color of grapes",
-      "difficulty": 1
+      "image": "purple. png",
+      "audio": "purple.mp3",
+      "video": "purple.mp4"
     },
     {
       "id": "fc_color_006",
-      "word":  "Orange",
-      "pronunciation":  "/ˈɔːrɪndʒ/",
-      "imageUrl": "assets/images/flashcards/colors/orange.png",
-      "audioUrl": "assets/sounds/flashcards/colors/orange_word.mp3",
-      "topicId": "colors",
+      "word": "Orange",
+      "pronunciation": "/ˈɔːrɪndʒ/",
+      "difficulty": 1,
       "vietnameseName": "Cam",
       "description": "The color of oranges",
-      "difficulty": 1
+      "image": "orange.png",
+      "audio": "orange.mp3",
+      "video": "orange.mp4"
     },
     {
-      "id": "fc_color_007",
-      "word":  "Black",
+      "id":  "fc_color_007",
+      "word": "Black",
       "pronunciation": "/blæk/",
-      "imageUrl": "assets/images/flashcards/colors/black.png",
-      "audioUrl": "assets/sounds/flashcards/colors/black_word.mp3",
-      "topicId":  "colors",
+      "difficulty": 1,
       "vietnameseName": "Đen",
       "description": "The darkest color",
-      "difficulty":  1
+      "image":  "black.png",
+      "audio": "black.mp3",
+      "video": "black. mp4"
     },
     {
       "id": "fc_color_008",
       "word": "White",
       "pronunciation": "/waɪt/",
-      "imageUrl": "assets/images/flashcards/colors/white.png",
-      "audioUrl": "assets/sounds/flashcards/colors/white_word.mp3",
-      "topicId": "colors",
-      "vietnameseName": "Trắng",
+      "difficulty": 1,
+      "vietnameseName":  "Trắng",
       "description":  "The brightest color",
-      "difficulty":  1
+      "image":  "white.png",
+      "audio": "white.mp3",
+      "video": "white. mp4"
     }
   ]
 }

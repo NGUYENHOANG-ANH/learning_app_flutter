@@ -1,0 +1,35 @@
+{
+  "userId": "local_child_001",
+
+  "stars": {
+    "total": 6
+  },
+
+  "topics": {
+    "animals": {
+      "unlocked": true,
+      "starsEarned": 3
+    },
+    "shapes": {
+      "unlocked": true,
+      "starsEarned": 3
+    },
+    "colors": {
+      "unlocked": false,
+      "starsEarned": 0
+    }
+  },
+
+  "quizzes": {
+    "quiz_001": {
+      "completed": true,
+      "bestStars": 3,
+      "perfect": true
+    },
+    "quiz_002": {
+      "completed": true,
+      "bestStars": 2,
+      "perfect": false
+    }
+  }
+}
