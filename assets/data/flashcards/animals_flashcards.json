@@ -1,10 +1,10 @@
 {
   "topicId": "animals",
   "assetBase": {
-    "image": "assets/data/images/flashcards/animals/",
-    "audio": "assets/data/sounds/flashcards/animals/",
-    "video": "assets/data/videos/flashcards/animals/"
-  },
+  "image": "assets/images/flashcards/animals/",
+  "audio": "assets/sounds/flashcards/animals/",
+  "video": "assets/videos/flashcards/animals/"
+},
   "flashcards": [
     {
       "id": "fc_animal_001",

@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/flashcard_model.dart';
+import '../services/data_service.dart';
 
 // Flashcard list provider
 final flashcardProvider =
@@ -10,15 +11,21 @@ final flashcardProvider =
 
 class FlashcardNotifier extends StateNotifier<List<Flashcard>> {
   final String topicId;
+  final DataService _dataService = DataService();
 
   FlashcardNotifier(this.topicId) : super([]) {
     _loadFlashcards();
   }
 
   Future<void> _loadFlashcards() async {
-    // TODO: Load from JSON or API
-    // For now, return empty list
-    state = [];
+    try {
+      final flashcards = await _dataService.loadFlashcardsForTopic(topicId);
+
+      state = flashcards;
+    } catch (e) {
+      print("❌ Load flashcards error: $e");
+      state = [];
+    }
   }
 
   void addFlashcard(Flashcard flashcard) {
